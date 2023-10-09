@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Controle de Teclas Multimídia</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="icon" type="image/x-icon" href="/icon.ico">
+    <script>
+        $(document).ready(function () {
+            $("button[name='tecla']").click(function (event) {
+                event.preventDefault();
+                var tecla = $(this).val();
+                $.ajax({
+                    url: "/simular-tecla",
+                    method: "POST",
+                    data: {
+                        tecla: tecla
+                    }
+                });
+
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <form class="botoes">
+        <button id="volumedown" type="button" name="tecla" value="volumedown">
+            <svg viewBox="0 0 24 24">
+                <g fill="none" stroke="currentColor" stroke-width="2">
+                    <path stroke-linejoin="round" d="M8 9H5v6h3l5 4V5L8 9z" />
+                    <path stroke-linecap="round" d="M17 8a5.657 5.657 0 0 1 0 8" />
+                </g>
+            </svg>
+        </button>
+        <button id="volumeup" type="button" name="tecla" value="volumeup">
+            <svg viewBox="0 0 24 24">
+                <g fill="none" stroke="currentColor" stroke-width="2">
+                    <path stroke-linejoin="round" d="M6 9H3v6h3l5 4V5L6 9z" />
+                    <path stroke-linecap="round" d="M18.5 5.5a9.192 9.192 0 0 1 0 13M15 8a5.657 5.657 0 0 1 0 8" />
+                </g>
+            </svg>
+        </button>
+        <button id="playpause" type="button" name="tecla" value="playpause">
+            <svg viewBox="0 0 256 256">
+                <path fill="currentColor"
+                    d="M188 64v128a12 12 0 0 1-24 0V64a12 12 0 0 1 24 0Zm36-12a12 12 0 0 0-12 12v128a12 12 0 0 0 24 0V64a12 12 0 0 0-12-12Zm-76 76a19.71 19.71 0 0 1-9.19 16.71l-88.18 56.16A19.91 19.91 0 0 1 20 184.15V71.85a19.91 19.91 0 0 1 30.63-16.72l88.18 56.16A19.71 19.71 0 0 1 148 128Zm-27.62 0L44 79.37v97.26Z" />
+            </svg>
+        </button>
+        <button id="prevtrack" type="button" name="tecla" value="prevtrack">
+            <svg viewBox="0 0 24 24">
+                <path fill="currentColor"
+                    d="M19 7.766c0-1.554-1.696-2.515-3.029-1.715l-7.056 4.234c-1.295.777-1.295 2.653 0 3.43l7.056 4.234c1.333.8 3.029-.16 3.029-1.715V7.766zM9.944 12L17 7.766v8.468L9.944 12zM6 6a1 1 0 0 1 1 1v10a1 1 0 1 1-2 0V7a1 1 0 0 1 1-1z" />
+            </svg>
+        </button>
+
+        <button id="nexttrack" type="button" name="tecla" value="nexttrack">
+            <svg viewBox="0 0 24 24">
+                <g transform="rotate(180 12 12)">
+                    <path fill="currentColor"
+                        d="M19 7.766c0-1.554-1.696-2.515-3.029-1.715l-7.056 4.234c-1.295.777-1.295 2.653 0 3.43l7.056 4.234c1.333.8 3.029-.16 3.029-1.715V7.766zM9.944 12L17 7.766v8.468L9.944 12zM6 6a1 1 0 0 1 1 1v10a1 1 0 1 1-2 0V7a1 1 0 0 1 1-1z" />
+                </g>
+            </svg>
+        </button>
+    </form>
+</body>
